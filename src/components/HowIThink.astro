@@ -1,0 +1,234 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Understand",
+    description:
+      "Start with the problem, not the solution. Understand the people, context, constraints, and why the problem is worth solving.",
+  },
+  {
+    number: "02",
+    title: "Define",
+    description:
+      "Turn ambiguity into a clear direction. Define what needs to be built, what doesn't, and what success actually looks like.",
+  },
+  {
+    number: "03",
+    title: "Design",
+    description:
+      "Shape the experience before writing the code. Keep the interface simple, intentional, and focused on the things that matter.",
+  },
+  {
+    number: "04",
+    title: "Build",
+    description:
+      "Move quickly from idea to working software. Choose the right tools, keep the architecture pragmatic, and prioritize shipping.",
+  },
+  {
+    number: "05",
+    title: "Refine",
+    description:
+      "The first version is rarely the right version. Test, observe, remove unnecessary complexity, and keep improving the product.",
+  },
+  {
+    number: "06",
+    title: "Ship",
+    description:
+      "Put it in the hands of real people. Learn from reality instead of endlessly polishing something nobody has used.",
+  },
+];
+---
+
+<section
+  class="border-t border-neutral-200 px-6 py-32 lg:px-8 lg:py-44"
+>
+  <div class="mx-auto max-w-7xl">
+
+    <!-- Header -->
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+
+      <div>
+        <p
+          class="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-neutral-400"
+        >
+          How I think
+        </p>
+
+        <h2
+          class="text-4xl font-semibold tracking-[-0.05em] sm:text-5xl lg:text-6xl"
+        >
+          From idea
+          <br />
+          <span class="text-neutral-400">to shipped.</span>
+        </h2>
+      </div>
+
+      <div class="max-w-xl lg:pt-10">
+        <p class="text-lg leading-8 text-neutral-500">
+          Good software isn't just about writing good code. It's about
+          understanding the problem, making deliberate decisions, and
+          getting something useful into the real world.
+        </p>
+
+        <!-- Process Graphic -->
+        <div
+          class="process-graphic mt-12 hidden lg:block"
+          aria-label="Six step development process"
+        >
+          <div class="relative">
+
+            <!-- Connecting line -->
+            <div
+              class="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-neutral-200"
+            >
+              <div
+                class="process-progress h-full w-0 bg-neutral-950 transition-all duration-700 ease-out"
+              ></div>
+            </div>
+
+            <!-- Nodes -->
+            <div class="relative flex items-center justify-between">
+              {
+                steps.map((step, index) => (
+                  <button
+                    type="button"
+                    class="process-node group relative flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-white transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-neutral-300"
+                    data-index={index}
+                    aria-label={`${step.number} ${step.title}`}
+                  >
+                    <span
+                      class="h-2 w-2 rounded-full bg-neutral-300 transition-all duration-300 group-hover:h-3 group-hover:w-3 group-hover:bg-neutral-950"
+                    ></span>
+
+                    <span
+                      class="pointer-events-none absolute top-12 whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 opacity-0 transition-all duration-300 group-hover:translate-y-1 group-hover:opacity-100"
+                    >
+                      {step.title}
+                    </span>
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div class="process-list mt-24 border-t border-neutral-200">
+      {
+        steps.map((step, index) => (
+          <div
+            class="process-row group grid border-b border-neutral-200 py-8 transition-all duration-300 lg:grid-cols-[80px_260px_1fr] lg:items-start lg:gap-12 lg:py-10"
+            data-index={index}
+          >
+            <!-- Number -->
+            <span
+              class="mb-4 text-xs font-medium tracking-wider text-neutral-400 lg:mb-0"
+            >
+              {step.number}
+            </span>
+
+            <!-- Title -->
+            <div class="flex items-center gap-4">
+              <span
+                class="process-dot h-2 w-2 rounded-full bg-neutral-300 transition-all duration-300 group-hover:h-3 group-hover:w-3 group-hover:bg-neutral-950"
+              ></span>
+
+              <h3
+                class="text-2xl font-semibold tracking-[-0.03em] transition-transform duration-300 group-hover:translate-x-1 sm:text-3xl"
+              >
+                {step.title}
+              </h3>
+            </div>
+
+            <!-- Description -->
+            <div class="mt-4 max-w-xl lg:mt-0">
+              <p class="text-sm leading-7 text-neutral-500">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Closing statement -->
+    <div class="mt-20 flex justify-end">
+      <p
+        class="max-w-xl text-right text-2xl font-medium leading-relaxed tracking-[-0.03em] text-neutral-950 sm:text-3xl"
+      >
+        Build fast.
+        <span class="text-neutral-400">
+          Learn faster.
+        </span>
+        Keep shipping.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const nodes = document.querySelectorAll<HTMLElement>(".process-node");
+  const rows = document.querySelectorAll<HTMLElement>(".process-row");
+  const progress = document.querySelector<HTMLElement>(".process-progress");
+
+  function activateStep(index: number) {
+    const total = nodes.length;
+
+    nodes.forEach((node, i) => {
+      const dot = node.querySelector("span");
+
+      if (i <= index) {
+        node.classList.add("border-neutral-950");
+        node.classList.remove("border-neutral-200");
+
+        dot?.classList.remove("bg-neutral-300");
+        dot?.classList.add("bg-neutral-950");
+      } else {
+        node.classList.remove("border-neutral-950");
+        node.classList.add("border-neutral-200");
+
+        dot?.classList.remove("bg-neutral-950");
+        dot?.classList.add("bg-neutral-300");
+      }
+    });
+
+    rows.forEach((row, i) => {
+      if (i === index) {
+        row.classList.add("bg-neutral-50");
+      } else {
+        row.classList.remove("bg-neutral-50");
+      }
+    });
+
+    const percentage =
+      total > 1 ? (index / (total - 1)) * 100 : 0;
+
+    if (progress) {
+      progress.style.width = `${percentage}%`;
+    }
+  }
+
+  nodes.forEach((node, index) => {
+    node.addEventListener("mouseenter", () => {
+      activateStep(index);
+    });
+
+    node.addEventListener("focus", () => {
+      activateStep(index);
+    });
+
+    node.addEventListener("click", () => {
+      activateStep(index);
+    });
+  });
+
+  rows.forEach((row, index) => {
+    row.addEventListener("mouseenter", () => {
+      activateStep(index);
+    });
+  });
+
+  activateStep(0);
+</script>

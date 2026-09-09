@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+
+const navItems = [
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 backdrop-blur-md">
+  <nav
+    class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8"
+  >
+    <!-- Logo -->
+    <a href="/" class="group flex items-center gap-3">
+      <Image
+        src="/images/signature.svg"
+        alt="Rahul Singhania"
+        class="w-32 sm:w-48 "
+        width={1040}
+        height={500}
+        format="svg"
+        quality={85}
+      />
+    </a>
+
+    <!-- Navigation -->
+    <div class="hidden items-center gap-8 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm text-neutral-500 transition-colors duration-200 hover:text-neutral-950"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- CTA -->
+   <a
+      href="https://wa.me/919102977522?text=Hi%20Rahul%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full border border-neutral-200 px-5 py-2.5 text-sm font-medium transition-all duration-200 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
+    >
+      Let's talk
+    </a>
+  </nav>
+</header>

@@ -1,0 +1,130 @@
+---
+const capabilities = [
+  {
+    number: "01",
+    title: "Think in Products",
+    description:
+      "I start with the problem, not the feature. I think about the user, the business, the constraints, and whether the thing is worth building at all.",
+  },
+  {
+    number: "02",
+    title: "Design for Clarity",
+    description:
+      "Complexity should live in the system, not in the interface. I remove friction, reduce decisions, and make software feel obvious to use.",
+  },
+  {
+    number: "03",
+    title: "Build the Whole System",
+    description:
+      "From frontend and mobile to backend, infrastructure, and AI, I build the pieces required to turn an idea into reliable production software.",
+  },
+  {
+    number: "04",
+    title: "Own the Outcome",
+    description:
+      "I stay involved beyond the first release. I ship, observe what happens in the real world, fix what doesn't work, and keep improving.",
+  },
+];
+---
+
+<section class="border-t border-neutral-200 px-6 py-32 lg:px-8 lg:py-44">
+  <div class="mx-auto max-w-7xl">
+
+    <!-- Header -->
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
+      <div>
+        <p
+          class="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-neutral-400"
+        >
+          How I work
+        </p>
+
+        <h2
+          class="text-4xl font-semibold leading-[1.05] tracking-[-0.05em] sm:text-5xl lg:text-7xl"
+        >
+          I think in
+          <br />
+          <span class="text-neutral-400">products, not tickets.</span>
+        </h2>
+      </div>
+
+      <div class="max-w-xl lg:pt-12">
+        <p class="text-lg leading-8 text-neutral-500">
+          Good software sits at the intersection of product thinking,
+          thoughtful design, and solid engineering. I care about all three —
+          and about what happens after the software ships.
+        </p>
+      </div>
+    </div>
+
+    <!-- Capabilities -->
+    <div class="mt-24 grid border-t border-neutral-200 md:grid-cols-2">
+      {
+        capabilities.map((item, index) => (
+          <article
+            class:list={[
+              "group relative py-10 md:py-14",
+              index % 2 === 0 &&
+                "md:border-r md:border-neutral-200 md:pr-12",
+              index % 2 === 1 && "md:pl-12",
+              index > 1 && "border-t border-neutral-200",
+            ]}
+          >
+            <!-- Top -->
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-medium tracking-wider text-neutral-400">
+                {item.number}
+              </span>
+
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 text-sm text-neutral-400 transition-all duration-300 group-hover:border-neutral-950 group-hover:bg-neutral-950 group-hover:text-white"
+              >
+                ↗
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3
+              class="mt-12 text-3xl font-semibold tracking-[-0.04em] transition-transform duration-300 group-hover:translate-x-1 sm:text-4xl"
+            >
+              {item.title}
+            </h3>
+
+            <!-- Description -->
+            <p
+              class="mt-5 max-w-lg text-sm leading-7 text-neutral-500"
+            >
+              {item.description}
+            </p>
+
+            <!-- Bottom indicator -->
+            <div
+              class="mt-10 h-px w-10 bg-neutral-200 transition-all duration-500 group-hover:w-20 group-hover:bg-neutral-950"
+            />
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Closing statement -->
+    <div class="mt-24 border-t border-neutral-200 pt-8">
+      <div
+        class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
+      >
+        <p class="text-sm text-neutral-400">
+          Technology is the tool.
+        </p>
+
+        <p
+          class="max-w-xl text-right text-2xl font-medium leading-relaxed tracking-[-0.03em] sm:text-3xl"
+        >
+          The real goal is to build something
+          <span class="text-neutral-400">
+            people actually want.
+          </span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

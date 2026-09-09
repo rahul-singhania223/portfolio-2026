@@ -1,0 +1,188 @@
+---
+import { Image } from "astro:assets";
+
+const projects = [
+  {
+    number: "01",
+    title: "Quick Commerce",
+    description:
+      "A complete grocery delivery ecosystem connecting customers, stores, riders, and administrators in real time.",
+    category: "Business Platform",
+    year: "2026",
+    tags: ["Web", "Mobile", "Real-time"],
+    href: "#",
+    image: "/images/works/quick-commerce.png",
+  },
+
+  // {
+  //   number: "02",
+  //   title: "FotoAI",
+  //   description:
+  //     "An AI-powered image editing platform built for e-commerce businesses to create better product photography faster.",
+  //   category: "AI · SaaS",
+  //   year: "2026",
+  //   tags: ["AI", "SaaS", "Computer Vision"],
+  //   href: "/work/fotoai",
+  //   image: "/images/works/fotoai.png",
+  // },
+
+  {
+    number: "02",
+    title: "PDF Scanner",
+    description:
+      "A privacy-first mobile document scanner focused on making scanning, editing, OCR, signing, and PDF workflows simple.",
+    category: "Mobile App",
+    year: "2026",
+    tags: ["React Native", "OCR", "Android"],
+    href: "#",
+    image: "/images/works/pdf-scanner.png",
+  },
+];
+---
+
+<section
+  id="work"
+  class="border-t border-neutral-200 px-6 py-32 lg:px-8 lg:py-44"
+>
+  <div class="mx-auto max-w-7xl">
+
+    <!-- Header -->
+    <div
+      class="flex flex-col justify-between gap-8 md:flex-row md:items-end"
+    >
+      <div>
+        <p
+          class="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-neutral-400"
+        >
+          Selected work
+        </p>
+
+        <h2
+          class="max-w-3xl text-4xl font-semibold tracking-[-0.05em] sm:text-5xl lg:text-7xl"
+        >
+          Things I've
+          <br />
+          <span class="text-neutral-400">built.</span>
+        </h2>
+      </div>
+
+      <p
+        class="max-w-sm text-sm leading-7 text-neutral-500 md:mb-2"
+      >
+        A selection of products and systems I've designed, engineered,
+        shipped, and experimented with.
+      </p>
+    </div>
+
+    <!-- Projects -->
+    <div class="mt-20 border-t border-neutral-200">
+      {
+        projects.map((project) => (
+          <article
+            class="group grid border-b border-neutral-200 py-10 transition-colors duration-300 hover:bg-neutral-50 lg:grid-cols-[80px_1fr_1.1fr] lg:gap-12 lg:py-14"
+          >
+            <!-- Number -->
+            <div class="mb-6 lg:mb-0">
+              <span class="text-sm font-medium text-neutral-400">
+                {project.number}
+              </span>
+            </div>
+
+            <!-- Project information -->
+            <div class="flex flex-col">
+              <div>
+                <!-- Category / Year -->
+                <div class="mb-4 flex items-center gap-3">
+                  <span
+                    class="text-xs font-medium uppercase tracking-[0.14em] text-neutral-400"
+                  >
+                    {project.category}
+                  </span>
+
+                  <span class="h-1 w-1 rounded-full bg-neutral-300"></span>
+
+                  <span class="text-xs text-neutral-400">
+                    {project.year}
+                  </span>
+                </div>
+
+                <!-- Title -->
+                <h3
+                  class="text-3xl font-semibold tracking-[-0.04em] sm:text-4xl"
+                >
+                  {project.title}
+                </h3>
+
+                <!-- Description -->
+                <p
+                  class="mt-5 max-w-md text-sm leading-7 text-neutral-500"
+                >
+                  {project.description}
+                </p>
+
+                <!-- Tags -->
+                <div class="mt-7 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      class="rounded-full border border-neutral-200 px-3 py-1.5 text-xs text-neutral-500"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Case Study Button -->
+              <div class="mt-10">
+                <a
+                  href={project.href}
+                  class="group/button inline-flex w-fit items-center gap-3 rounded-full border border-neutral-200 px-5 py-2.5 text-sm font-medium text-neutral-950 transition-all duration-300 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
+                >
+                  <span>View case study</span>
+
+                  <span
+                    class="transition-transform duration-300 group-hover/button:translate-x-1"
+                  >
+                    →
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project image -->
+            <div
+              class="relative mt-10 aspect-[16/10] overflow-hidden rounded-xl bg-neutral-100 lg:mt-0"
+            >
+              <Image
+                src={project.image}
+                alt={`${project.title} project preview`}
+                width={1024}
+                height={700}
+                format="webp"
+                quality={85}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              />
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- More Projects -->
+    <div class="mt-10 flex justify-end">
+      <a
+        href="#"
+        class="group inline-flex items-center gap-3 text-sm font-medium text-neutral-950"
+      >
+        <span>View more projects</span>
+
+        <span
+          class="transition-transform duration-300 group-hover:translate-x-1"
+        >
+          →
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

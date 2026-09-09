@@ -1,0 +1,118 @@
+---
+const proofItems = [
+  {
+    value: "03+",
+    label: "Products",
+    description:
+      "Products and platforms taken from an idea to working software.",
+  },
+  {
+    value: "03+",
+    label: "Apps",
+    description:
+      "Web and mobile applications built for real users and real workflows.",
+  },
+  {
+    value: "1000s",
+    label: "Users",
+    description:
+      "Software designed around people actually using the product—not just demos.",
+  },
+  {
+    value: "∞",
+    label: "Business Impact",
+    description:
+      "The goal behind every project: solve a meaningful problem and create measurable value.",
+  },
+];
+---
+
+<section class="border-t border-neutral-200 px-6 py-32 lg:px-8 lg:py-44">
+  <div class="mx-auto max-w-7xl">
+
+    <!-- Header -->
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+      <div>
+        <p
+          class="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-neutral-400"
+        >
+          Proof
+        </p>
+
+        <h2
+          class="text-4xl font-semibold leading-[1.05] tracking-[-0.05em] sm:text-5xl lg:text-7xl"
+        >
+          Built in the
+          <br />
+          <span class="text-neutral-400">real world.</span>
+        </h2>
+      </div>
+
+      <div class="max-w-xl lg:pt-10">
+        <p class="text-lg leading-8 text-neutral-500">
+          Ideas are easy to talk about. Building something, putting it in
+          front of people, and making it useful is the part that matters.
+        </p>
+      </div>
+    </div>
+
+    <!-- Proof Grid -->
+    <div class="mt-24 grid border-t border-neutral-200 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        proofItems.map((item, index) => (
+          <article
+            class:list={[
+              "group border-b border-neutral-200 py-10 sm:py-12 lg:border-b-0 lg:py-12",
+              index > 0 && "sm:border-l sm:border-neutral-200 sm:pl-8",
+              index > 1 && "lg:border-l lg:border-neutral-200 lg:pl-8",
+              index === 0 && "lg:pr-8",
+            ]}
+          >
+            <!-- Value -->
+            <div
+              class="text-5xl font-semibold tracking-[-0.06em] transition-transform duration-300 group-hover:-translate-y-1 sm:text-6xl"
+            >
+              {item.value}
+            </div>
+
+            <!-- Label -->
+            <h3 class="mt-8 text-lg font-semibold tracking-tight">
+              {item.label}
+            </h3>
+
+            <!-- Description -->
+            <p class="mt-4 text-sm leading-7 text-neutral-500">
+              {item.description}
+            </p>
+
+            <!-- Indicator -->
+            <div
+              class="mt-8 h-px w-8 bg-neutral-200 transition-all duration-500 group-hover:w-16 group-hover:bg-neutral-950"
+            ></div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Statement -->
+    <div class="mt-24 border-t border-neutral-200 pt-8">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+        <span
+          class="text-xs font-medium uppercase tracking-[0.16em] text-neutral-400"
+        >
+          The metric that matters
+        </span>
+
+        <p
+          class="max-w-2xl text-2xl font-medium leading-relaxed tracking-[-0.03em] sm:text-3xl"
+        >
+          Not how much code I wrote.
+          <br />
+          <span class="text-neutral-400">
+            How much value the software created.
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
